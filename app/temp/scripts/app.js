@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -11223,7 +11223,7 @@ var _noframework = __webpack_require__(1);
 
 var _noframework2 = _interopRequireDefault(_noframework);
 
-var _jquerySmoothScroll = __webpack_require__(6);
+var _jquerySmoothScroll = __webpack_require__(8);
 
 var _jquerySmoothScroll2 = _interopRequireDefault(_jquerySmoothScroll);
 
@@ -11235,6 +11235,7 @@ var StickyHeader = function () {
 	function StickyHeader() {
 		_classCallCheck(this, StickyHeader);
 
+		this.lazyImages = (0, _jquery2.default)('.lazyload');
 		this.siteHeader = (0, _jquery2.default)(".site-header");
 		this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
 		this.createHeaderWaypoint();
@@ -11244,9 +11245,17 @@ var StickyHeader = function () {
 		this.createPageSectionWaypoints();
 
 		this.addSmoothScrolling();
+		this.refreshWaypoints();
 	}
 
 	_createClass(StickyHeader, [{
+		key: 'refreshWaypoints',
+		value: function refreshWaypoints() {
+			this.lazyImages.load(function () {
+				Waypoint.refreshAll();
+			});
+		}
+	}, {
 		key: 'addSmoothScrolling',
 		value: function addSmoothScrolling() {
 			this.headerLinks.smoothScroll();
@@ -11305,11 +11314,16 @@ var StickyHeader = function () {
 exports.default = StickyHeader;
 
 /***/ }),
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 var _MobileMenu = __webpack_require__(2);
 
@@ -11323,10 +11337,6 @@ var _StickyHeader = __webpack_require__(4);
 
 var _StickyHeader2 = _interopRequireDefault(_StickyHeader);
 
-var _jquery = __webpack_require__(0);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mobileMenu = new _MobileMenu2.default();
@@ -11335,7 +11345,8 @@ new _RevealOnScroll2.default((0, _jquery2.default)('.testimonial'), "60%");
 var stickyHeader = new _StickyHeader2.default();
 
 /***/ }),
-/* 6 */
+/* 7 */,
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
